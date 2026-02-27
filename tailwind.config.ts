@@ -94,6 +94,15 @@ export default {
           "0%, 100%": { opacity: "0.3" },
           "50%": { opacity: "1" },
         },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg) scale(1)" },
+          "50%": { transform: "rotate(180deg) scale(1.2)" },
+          "100%": { transform: "rotate(360deg) scale(1)" },
+        },
+        "zodiac-pulse": {
+          "0%, 100%": { transform: "scale(1)", opacity: "0.7", filter: "drop-shadow(0 0 0px hsl(43 80% 55% / 0))" },
+          "50%": { transform: "scale(1.15)", opacity: "1", filter: "drop-shadow(0 0 12px hsl(43 80% 55% / 0.6))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -101,6 +110,8 @@ export default {
         "float": "float 6s ease-in-out infinite",
         "shimmer": "shimmer 3s ease-in-out infinite",
         "twinkle": "twinkle 3s ease-in-out infinite",
+        "spin-slow": "spin-slow 8s ease-in-out infinite",
+        "zodiac-pulse": "zodiac-pulse 3s ease-in-out infinite",
       },
     },
   },

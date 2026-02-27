@@ -32,7 +32,7 @@ const ZodiacGuide = () => {
               />
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-3xl">{product.zodiacSymbol}</span>
+                  <span className="text-3xl animate-zodiac-pulse">{product.zodiacSymbol}</span>
                   <h3 className="font-display text-2xl">{product.zodiac}</h3>
                   <span className="text-xs tracking-widest uppercase text-primary/60 font-body ml-auto">{product.element}</span>
                 </div>
