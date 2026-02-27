@@ -12,6 +12,25 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-background/70" />
       <div className="absolute inset-0 star-sparkle opacity-30" />
 
+      {/* Floating zodiac signs */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+        {["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"].map((symbol, i) => (
+          <span
+            key={i}
+            className="absolute text-primary/20 animate-zodiac-pulse font-display"
+            style={{
+              fontSize: `${1.5 + Math.random() * 2}rem`,
+              top: `${5 + (i * 7.5)}%`,
+              left: `${3 + ((i * 17) % 90)}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + (i % 3)}s`,
+            }}
+          >
+            {symbol}
+          </span>
+        ))}
+      </div>
+
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
         <div className="flex items-center justify-center gap-2 mb-6">
           <Sparkles className="w-5 h-5 text-primary animate-twinkle" />
