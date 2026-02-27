@@ -19,7 +19,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-        <span className="absolute top-4 left-4 text-3xl opacity-70 group-hover:opacity-100 transition-opacity">
+        <span className="absolute top-4 left-4 text-3xl animate-zodiac-pulse group-hover:animate-spin-slow transition-all">
           {product.zodiacSymbol}
         </span>
         <span className="absolute top-4 right-4 text-xs tracking-widest uppercase text-primary/70 font-body bg-background/50 px-2 py-1 rounded">
