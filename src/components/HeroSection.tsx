@@ -6,11 +6,24 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center animate-hero-bg-drift"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-background/70" />
-      <div className="absolute inset-0 star-sparkle opacity-30" />
+      <div className="absolute inset-0 star-sparkle opacity-30 animate-star-drift" />
+
+      {/* Neon glow orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-neon-float-1 -top-40 -left-40" />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-celestial/20 blur-[100px] animate-neon-float-2 -bottom-32 -right-32" />
+        <div className="absolute w-[300px] h-[300px] rounded-full bg-star/10 blur-[80px] animate-neon-float-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      </div>
+
+      {/* Neon border lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-shimmer" />
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent animate-shimmer" style={{ animationDelay: '1.5s' }} />
+      </div>
 
       {/* Floating zodiac signs */}
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
