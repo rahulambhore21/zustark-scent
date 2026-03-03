@@ -17,10 +17,10 @@ const Shop = () => {
     <main className="pt-24 pb-0">
       <section className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-sm tracking-[0.3em] uppercase text-primary font-body">The Collection</span>
-          <h1 className="font-display text-4xl md:text-6xl mt-3 text-gradient-gold">All 12 Signs</h1>
+          <span className="text-sm tracking-[0.3em] uppercase text-primary font-body">संग्रह</span>
+          <h1 className="font-display text-4xl md:text-6xl mt-3 text-gradient-gold">सभी 12 राशियाँ</h1>
           <p className="text-muted-foreground mt-4 max-w-lg mx-auto font-body font-light">
-            Find the fragrance written in your stars.
+            अपने सितारों में लिखी खुशबू खोजें।
           </p>
         </div>
 
@@ -40,7 +40,7 @@ const Shop = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-24">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-24">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -1,4 +1,5 @@
 import { ShoppingBag } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
@@ -9,9 +10,15 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
 
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+  };
+
   return (
-    <div className="group relative bg-card border border-border hover:border-primary/30 rounded-lg overflow-hidden transition-all duration-500 glow-gold hover:shadow-lg">
-      <div className="relative aspect-[4/5] overflow-hidden">
+    <Link to={`/product/${product.id}`} className="group relative bg-card border border-border hover:border-primary/30 rounded-lg overflow-hidden transition-all duration-500 glow-gold hover:shadow-lg flex flex-col">
+      <div className="relative aspect-square overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
@@ -19,36 +26,36 @@ const ProductCard = ({ product }: ProductCardProps) => {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-        <span className="absolute top-4 left-4 text-3xl animate-zodiac-pulse group-hover:animate-spin-slow transition-all">
+        <span className="absolute top-2 left-2 md:top-4 md:left-4 text-2xl md:text-3xl animate-zodiac-pulse group-hover:animate-spin-slow transition-all">
           {product.zodiacSymbol}
         </span>
-        <span className="absolute top-4 right-4 text-xs tracking-widest uppercase text-primary/70 font-body bg-background/50 px-2 py-1 rounded">
+        <span className="absolute top-2 right-2 md:top-4 md:right-4 text-[10px] md:text-xs tracking-wider md:tracking-widest uppercase text-primary/70 font-body bg-background/50 px-1.5 md:px-2 py-0.5 md:py-1 rounded">
           {product.element}
         </span>
       </div>
 
-      <div className="p-5">
-        <h3 className="font-display text-xl mb-1">{product.name}</h3>
-        <p className="text-sm text-muted-foreground font-body mb-3 line-clamp-2">{product.description}</p>
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {product.notes.map((note) => (
-            <span key={note} className="text-xs text-primary/80 border border-primary/20 px-2 py-0.5 rounded font-body">
+      <div className="p-3 md:p-5 flex flex-col flex-grow">
+        <h3 className="font-display text-base md:text-xl mb-0.5 md:mb-1">{product.nameHindi}</h3>
+        <p className="text-xs md:text-sm text-muted-foreground font-body mb-2 md:mb-3 line-clamp-2">{product.descriptionHindi}</p>
+        <div className="flex flex-wrap gap-1 md:gap-1.5 mb-3 md:mb-4">
+          {product.notesHindi.slice(0, 3).map((note, index) => (
+            <span key={index} className="text-[10px] md:text-xs text-primary/80 border border-primary/20 px-1.5 md:px-2 py-0.5 rounded font-body">
               {note}
             </span>
           ))}
         </div>
-        <div className="flex items-center justify-between">
-          <span className="font-display text-2xl text-gradient-gold">${product.price}</span>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="font-display text-lg md:text-2xl text-gradient-gold">₹{product.price.toLocaleString('hi-IN')}</span>
           <button
-            onClick={() => addToCart(product)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-xs tracking-widest uppercase font-body rounded hover:opacity-90 transition-opacity"
+            onClick={handleAddToCart}
+            className="flex items-center gap-1 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-primary text-primary-foreground text-[10px] md:text-xs tracking-widest uppercase font-body rounded hover:opacity-90 transition-opacity"
           >
-            <ShoppingBag className="w-4 h-4" />
-            Add
+            <ShoppingBag className="w-3 h-3 md:w-4 md:h-4" />
+            <span className="hidden sm:inline">जोड़ें</span>
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

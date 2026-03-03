@@ -9,9 +9,9 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
-    { to: "/", label: "Home" },
-    { to: "/shop", label: "Shop" },
-    { to: "/zodiac-guide", label: "Zodiac Guide" },
+    { to: "/", label: "घर" },
+    { to: "/shop", label: "दुकान" },
+    { to: "/zodiac-guide", label: "राशि गाइड" },
   ];
 
   return (
