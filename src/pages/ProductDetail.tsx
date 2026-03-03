@@ -33,13 +33,6 @@ const ProductDetail = () => {
     toast.success(`${product.nameHindi} कार्ट में जोड़ा गया!`);
   };
 
-  const elementColors: Record<string, string> = {
-    Fire: "bg-red-500/10 text-red-500 border-red-500/20",
-    Earth: "bg-green-500/10 text-green-500 border-green-500/20",
-    Air: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    Water: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
-  };
-
   return (
     <div className="min-h-screen bg-background">
       {/* Breadcrumb */}
@@ -75,18 +68,11 @@ const ProductDetail = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
-                
-                {/* Zodiac Symbol */}
-                <div className="absolute top-6 left-6">
-                  <span className="text-6xl animate-zodiac-pulse">
-                    {product.zodiacSymbol}
-                  </span>
-                </div>
 
-                {/* Element Badge */}
+                {/* Product Type Badge */}
                 <div className="absolute top-6 right-6">
-                  <Badge className={`${elementColors[product.element]} text-sm px-3 py-1.5 font-body`}>
-                    {product.element}
+                  <Badge className="bg-primary/90 text-white border-0 text-sm px-3 py-1.5 font-body">
+                    {product.productType}
                   </Badge>
                 </div>
 
@@ -158,16 +144,16 @@ const ProductDetail = () => {
 
             <Separator className="mb-6" />
 
-            {/* Fragrance Notes */}
+            {/* Ingredients */}
             <div className="mb-6">
-              <h2 className="font-display text-2xl mb-4">सुगंध नोट्स</h2>
-              <div className="grid grid-cols-3 gap-3">
-                {product.notesHindi.map((note, index) => (
+              <h2 className="font-display text-2xl mb-4">सामग्री</h2>
+              <div className="grid grid-cols-2 gap-3">
+                {product.ingredientsHindi.map((ingredient, index) => (
                   <div
                     key={index}
                     className="text-center p-4 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors"
                   >
-                    <p className="font-body text-sm">{note}</p>
+                    <p className="font-body text-sm">{ingredient}</p>
                   </div>
                 ))}
               </div>
@@ -175,17 +161,25 @@ const ProductDetail = () => {
 
             <Separator className="mb-6" />
 
-            {/* Zodiac Info */}
+            {/* Product Info */}
             <div className="mb-6">
-              <h2 className="font-display text-2xl mb-4">राशि जानकारी</h2>
+              <h2 className="font-display text-2xl mb-4">उत्पाद जानकारी</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 rounded-lg border border-border bg-card">
-                  <p className="text-sm text-muted-foreground mb-1">राशि</p>
-                  <p className="font-display text-xl">{product.zodiac} {product.zodiacSymbol}</p>
+                  <p className="text-sm text-muted-foreground mb-1">ब्रांड</p>
+                  <p className="font-display text-lg">{product.brand}</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-card">
-                  <p className="text-sm text-muted-foreground mb-1">तत्व</p>
-                  <p className="font-display text-xl">{product.element}</p>
+                  <p className="text-sm text-muted-foreground mb-1">उत्पाद प्रकार</p>
+                  <p className="font-display text-lg">{product.productType}</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <p className="text-sm text-muted-foreground mb-1">के लिए आदर्श</p>
+                  <p className="font-display text-lg">{product.idealForHindi}</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <p className="text-sm text-muted-foreground mb-1">मूल देश</p>
+                  <p className="font-display text-lg">{product.countryOfOriginHindi}</p>
                 </div>
               </div>
             </div>
@@ -199,6 +193,10 @@ const ProductDetail = () => {
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">SKU:</span>
                   <span className="font-medium">{product.sku}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">पैक में:</span>
+                  <span className="font-medium">{product.packOf}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">वजन:</span>
@@ -235,43 +233,6 @@ const ProductDetail = () => {
                 </p>
               )}
             </div>
-          </div>
-        </div>
-
-        {/* Related Products */}
-        <div className="mt-16">
-          <h2 className="font-display text-3xl mb-8 text-center">
-            इसी तरह की सुगंधें
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {products
-              .filter((p) => p.element === product.element && p.id !== product.id)
-              .slice(0, 4)
-              .map((relatedProduct) => (
-                <Link
-                  key={relatedProduct.id}
-                  to={`/product/${relatedProduct.id}`}
-                  className="group relative bg-card border border-border hover:border-primary/30 rounded-lg overflow-hidden transition-all duration-500 glow-gold hover:shadow-lg"
-                >
-                  <div className="relative aspect-square overflow-hidden">
-                    <img
-                      src={relatedProduct.image}
-                      alt={relatedProduct.nameHindi}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                    <span className="absolute top-2 left-2 text-2xl">
-                      {relatedProduct.zodiacSymbol}
-                    </span>
-                  </div>
-                  <div className="p-3">
-                    <h3 className="font-display text-sm mb-1">{relatedProduct.nameHindi}</h3>
-                    <span className="font-display text-lg text-gradient-gold">
-                      ₹{relatedProduct.price.toLocaleString('hi-IN')}
-                    </span>
-                  </div>
-                </Link>
-              ))}
           </div>
         </div>
       </div>

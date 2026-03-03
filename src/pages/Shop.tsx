@@ -6,38 +6,20 @@ import Footer from "@/components/Footer";
 
 const Shop = () => {
   const [searchParams] = useSearchParams();
-  const elementParam = searchParams.get("element");
-  const [activeCategory, setActiveCategory] = useState(elementParam || "all");
+  const categoryParam = searchParams.get("category");
+  const [activeCategory, setActiveCategory] = useState(categoryParam || "all");
 
-  const filtered = activeCategory === "all"
-    ? products
-    : products.filter((p) => p.category === activeCategory);
+  const filtered = products; // Show all products for now
 
   return (
     <main className="pt-24 pb-0">
       <section className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="text-sm tracking-[0.3em] uppercase text-primary font-body">संग्रह</span>
-          <h1 className="font-display text-4xl md:text-6xl mt-3 text-gradient-gold">सभी 12 राशियाँ</h1>
+          <h1 className="font-display text-4xl md:text-6xl mt-3 text-gradient-gold">सभी अत्तर</h1>
           <p className="text-muted-foreground mt-4 max-w-lg mx-auto font-body font-light">
-            अपने सितारों में लिखी खुशबू खोजें।
+            आध्यात्मिक और प्रेम आकर्षण के लिए प्रीमियम अत्तर
           </p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-body tracking-wide transition-all ${
-                activeCategory === cat.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-primary/10"
-              }`}
-            >
-              {cat.icon} {cat.label}
-            </button>
-          ))}
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-24">

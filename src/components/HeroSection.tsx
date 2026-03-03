@@ -40,15 +40,15 @@ const HeroSection = () => {
         </div>
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light mb-6 leading-tight">
-          <span className="text-gradient-gold">Celestia</span>
+          <span className="text-gradient-gold">Kamakhya</span>
           <br />
           <span className="text-foreground text-3xl md:text-4xl lg:text-5xl font-light italic">
-            ब्रह्मांड की सुगंध
+            आध्यात्मिक अत्तर
           </span>
         </h1>
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto mb-10 font-body font-light leading-relaxed">
-          ज्योतिष के प्राचीन ज्ञान के माध्यम से अपनी विशेष सुगंध खोजें। प्रत्येक खुशबू आपकी आकाशीय पहचान के साथ प्रतिध्वनित होती है।
+          ज्योतिष, वास्तु, और आध्यात्मिक समाधान के लिए प्रीमियम अत्तर संग्रह। प्राकृतिक सामग्री से समृद्ध।
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -59,10 +59,10 @@ const HeroSection = () => {
             संग्रह देखें
           </Link>
           <Link
-            to="/zodiac-guide"
+            to="/shop"
             className="px-10 py-4 border border-primary/30 text-primary font-body text-sm tracking-widest uppercase rounded hover:bg-primary/10 transition-all"
           >
-            अपनी राशि ढूंढें
+            अभी खरीदें
           </Link>
         </div>
       </div>

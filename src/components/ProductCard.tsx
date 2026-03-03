@@ -26,11 +26,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-        <span className="absolute top-2 left-2 md:top-4 md:left-4 text-2xl md:text-3xl animate-zodiac-pulse group-hover:animate-spin-slow transition-all">
-          {product.zodiacSymbol}
-        </span>
         <span className="absolute top-2 right-2 md:top-4 md:right-4 text-[10px] md:text-xs tracking-wider md:tracking-widest uppercase text-primary/70 font-body bg-background/50 px-1.5 md:px-2 py-0.5 md:py-1 rounded">
-          {product.element}
+          {product.productType}
         </span>
       </div>
 
@@ -38,9 +35,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <h3 className="font-display text-base md:text-xl mb-0.5 md:mb-1">{product.nameHindi}</h3>
         <p className="text-xs md:text-sm text-muted-foreground font-body mb-2 md:mb-3 line-clamp-2">{product.descriptionHindi}</p>
         <div className="flex flex-wrap gap-1 md:gap-1.5 mb-3 md:mb-4">
-          {product.notesHindi.slice(0, 3).map((note, index) => (
+          {product.ingredientsHindi.slice(0, 2).map((ingredient, index) => (
             <span key={index} className="text-[10px] md:text-xs text-primary/80 border border-primary/20 px-1.5 md:px-2 py-0.5 rounded font-body">
-              {note}
+              {ingredient}
             </span>
           ))}
         </div>

@@ -11,7 +11,6 @@ const Navbar = () => {
   const links = [
     { to: "/", label: "घर" },
     { to: "/shop", label: "दुकान" },
-    { to: "/zodiac-guide", label: "राशि गाइड" },
   ];
 
   return (
@@ -20,7 +19,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <Stars className="w-6 h-6 text-primary" />
           <span className="font-display text-xl font-semibold text-gradient-gold tracking-wide">
-            CELESTIA
+            KAMAKHYA
           </span>
         </Link>
 
