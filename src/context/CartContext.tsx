@@ -20,7 +20,7 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const CART_STORAGE_KEY = 'cosmicScents_cart';
+const CART_STORAGE_KEY = 'kamakhyaAttar_cart';
 
 // Helper to load cart from localStorage
 const loadCartFromStorage = (): CartItem[] => {
