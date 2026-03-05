@@ -24,8 +24,8 @@ const UserGuideSection = () => {
         </div>
 
         {/* Images Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {[1, 2, 3, 4].map((num) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          {[1, 2, 3, 4, 5, 7].map((num) => (
             <div key={num} className="relative group overflow-hidden rounded-lg border border-primary/20">
               <img
                 src={`/img/${num}.jpeg`}
