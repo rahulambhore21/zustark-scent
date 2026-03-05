@@ -3,7 +3,8 @@ import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
 
 const FeaturedSection = () => {
-  const featured = products; // Show all products
+  // Show only first 4 products as featured
+  const featured = products.slice(0, 4);
 
   return (
     <section className="py-24 bg-gradient-celestial">
