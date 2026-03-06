@@ -16,13 +16,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
     addToCart(product);
   };
 
+  const discountPercentage = product.mrp 
+    ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
+    : 0;
+
   return (
     <Link to={`/product/${product.id}`} className="group relative bg-card border border-border hover:border-primary/30 rounded-lg overflow-hidden transition-all duration-500 glow-gold hover:shadow-lg flex flex-col">
       <div className="relative aspect-square overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
@@ -42,7 +46,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
           ))}
         </div>
         <div className="flex items-center justify-between mt-auto">
-          <span className="font-display text-lg md:text-2xl text-gradient-gold">₹{product.price.toLocaleString('hi-IN')}</span>
+          <div className="flex flex-col gap-0.5">
+            <div className="flex items-center gap-2">
+              <span className="font-display text-lg md:text-2xl text-gradient-gold">₹{product.price.toLocaleString('hi-IN')}</span>
+              {product.mrp && (
+                <span className="text-xs md:text-sm text-muted-foreground line-through">₹{product.mrp.toLocaleString('hi-IN')}</span>
+              )}
+            </div>
+            {discountPercentage > 0 && (
+              <span className="text-[10px] md:text-xs text-green-600 font-semibold">
+                {discountPercentage}% OFF
+              </span>
+            )}
+          </div>
           <button
             onClick={handleAddToCart}
             className="flex items-center gap-1 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-primary text-primary-foreground text-[10px] md:text-xs tracking-widest uppercase font-body rounded hover:opacity-90 transition-opacity"
